@@ -3,6 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
+// Fix it to debug environment
 var host = 'https://0sevepi5.qcloud.la';
 
 var config = {
