@@ -1,39 +1,11 @@
-<!--index.wxml-->
-<view class="container">
-    <!-- 用户登录测试 -->
-    <view class="userinfo" bindtap="login">
-        <image
-            class="userinfo-avatar"
-            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
-            background-size="cover"
-        ></image>
-        <view>
-            <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击测试登录接口'}}</text>
-            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
-        </view>
-    </view>
-
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <view class="uploader-text" bindtap="doUpload">
-            <text>上传图片</text>
-        </view>
-        <view class="uploader-container" wx:if="{{imgUrl}}">
-            <image
-                class="uploader-image"
-                src="{{imgUrl}}"
-                mode="aspectFit"
-                bindtap="previewImg"
-            ></image>
-        </view>
-    </view>
-
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
-            <text>快速增加 CGI</text>
+<view class="index">
+    <view class="nav">
+        <navigator wx:for="{{labs}}" wx:key="{{lab.id}}" wx:for-item="lab" url="/pages/{{lab.id}}/{{lab.id}}">
+            <icon type="{{ done[lab.id] ? 'success' : 'waiting_circle' }}" size="24"></icon>
+            <text>{{lab.title}}</text>
         </navigator>
+    </view>
+    <view class="clear">
+        <button bindtap="clear">清空任务状态</button>
     </view>
 </view>
