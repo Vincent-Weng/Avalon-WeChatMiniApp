@@ -10,6 +10,7 @@
     <view class="hint">
         <view class="line">{{url}}</view>
     </view>
+    <button open-type="getUserInfo">授权用户信息</button>
     <view class="command">
         <button wx:if="{{status != 'success'}}" type="primary" bindtap="request" disabled="{{requesting}}">获取会话</button>
     </view>
