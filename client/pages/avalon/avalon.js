@@ -50,7 +50,8 @@ Page({
         //「我」的信息，包括昵称、头像、分数、选择
         myName: "",
         myAvatar: null,
-        myChracter: "角色未知",
+        myCharacter: "未知",
+        myScore: 0,
         myStreak: 0,
         myChoice: Math.floor(Math.random() * 10000) % 3 + 1,
 

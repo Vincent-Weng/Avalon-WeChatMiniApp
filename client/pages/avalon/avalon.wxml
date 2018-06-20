@@ -1,17 +1,9 @@
 <view class="root {{connected && 'connected'}} {{finding && 'finding'}} {{playing && 'playing'}} {{done && 'done'}}">
     <view class="my-side">
         <image class="avatar" src="{{myAvatar}}" mode="aspectFill" />
-
-        <image class="hand {{win == 'me' && 'win'}}" src="../../images/{{myChoice}}.png" bindtap="switchChoice"></image>
-
-        <text class="score">
-            {{myName}}
-            身份 {{myCharacter}}
-        </text>
-        <text class="streak">
-            连胜 {{myStreak}}
-        </text>
     </view>
+
+    <view class="game-info">{{gameInfo}}</view>
 
     <button class="start-game" type="primary" bindtap="startGame">{{startButtonText}}</button>
 </view>

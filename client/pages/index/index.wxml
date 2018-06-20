@@ -5,7 +5,10 @@
             <text>{{lab.title}}</text>
         </navigator>
     </view>
-    <view class="clear">
-        <button bindtap="clear">清空任务状态</button>
+    <view class='clear'>
+      <button open-type="getUserInfo">授权用户信息</button>
     </view>
+    <!-- <view class="clear">
+        <button bindtap="clear">清空任务状态</button>
+    </view> -->
 </view>
