@@ -50,22 +50,7 @@ Page({
         //「我」的信息，包括昵称、头像、分数、选择
         myName: "",
         myAvatar: null,
-        myCharacter: "未知",
-        myScore: 0,
-        myStreak: 0,
-        myChoice: Math.floor(Math.random() * 10000) % 3 + 1,
-
-        //「你」的信息
-        youHere: false,
-        yourName: "",
-        yourAvatar: null,
-        yourScore: 0,
-        yourStreak: 0,
-        yourChoice: 1,
-        yourMove: 0,
-
-        // 取得胜利的是谁
-        win: null
+        myCharacter: "未知"
     },
 
     // 页面显示后，开始连接
