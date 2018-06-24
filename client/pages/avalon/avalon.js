@@ -26,11 +26,6 @@ const lab = require('../../lib/lab');
 // 设置会话登录地址
 wafer.setLoginUrl(`https://${app.config.host}/login`);
 
-// 文案
-const WIN_TEXTS = ['很棒', '秒杀', '赢了', 'Winner', '胜利', '不要大意', '无敌啊'];
-const LOSE_TEXTS = ['失误', '卧槽', '不可能', 'Loser', '行不行啊', '加油', '大侠再来'];
-const EQ_TEXTS = ['平局', '平分秋色', '对方学你', '照镜子', '半斤八两', '换一个', '一样的'];
-const pickText = texts => texts[Math.floor(texts.length * Math.random())];
 
 // 定义页面
 Page({
@@ -50,7 +45,6 @@ Page({
         //「我」的信息，包括昵称、头像、分数、选择
         myName: "",
         myAvatar: null,
-        myCharacter: "未知"
     },
 
     // 页面显示后，开始连接
@@ -115,102 +109,107 @@ Page({
 
         // 游戏开始，初始化对方信息，启动计时器
         tunnel.on('start', packet => {
-            const you = packet.players.filter(user => user.uid !== this.uid).pop();
+            const otherPlayers = packet.players.filter(user => user.uid !== this.uid).pop();
+            const me = packet.players.filter(user => user.uid === this.uid).pop();
 
             this.setData({
                 playing: false,
                 done: false,
                 finding: true,
-                gameInfo: '正在寻找玩伴...'
+                gameInfo: "您的身份牌是:" + me.character
             });
-            setTimeout(() => {
-                this.setData({
-                    youHere: true, 
-                    yourName: you.uname,
-                    yourAvatar: you.uavatar,
-                    finding: false,
-                    playing: true,
-                    gameInfo: "准备"
-                });
-            }, 10);
+            // [Avalon] no timeout
+            // setTimeout(() => {
+            //     this.setData({
+            //         youHere: true,
+            //         yourName: you.uname,
+            //         yourAvatar: you.uavatar,
+            //         finding: false,
+            //         playing: true,
+            //         gameInfo: "准备"
+            //     });
+            // }, 10);
 
-            let gameTime = packet.gameTime;
-            clearInterval(this.countdownId);
-            this.countdownId = setInterval(() => {
-                if (gameTime > 0) {
-                    this.setData({ gameInfo: --gameTime });
-                } else {
-                    clearInterval(this.countdownId);
-                }
-            }, 1000);
-
-            this.tunnel.emit('choice', { choice: this.data.myChoice });
+            // let gameTime = packet.gameTime;
+            // clearInterval(this.countdownId);
+            // this.countdownId = setInterval(() => {
+            //     if (gameTime > 0) {
+            //         this.setData({ gameInfo: --gameTime });
+            //     } else {
+            //         clearInterval(this.countdownId);
+            //     }
+            // }, 1000);
+            //
+            // this.tunnel.emit('choice', { choice: this.data.myChoice });
         });
 
-        // 对方有动静的时候，触发提醒
-        let movementTimer = 0;
-        const movementTimeout = 300;
-        tunnel.on('movement', packet => {
-            const lastMove = this.lastMove;
+        // [Avalon] No movement
+        // // 对方有动静的时候，触发提醒
+        // let movementTimer = 0;
+        // const movementTimeout = 300;
+        // tunnel.on('movement', packet => {
+        //     const lastMove = this.lastMove;
+        //
+        //     this.setData({ yourMove: lastMove == 1 ? 2 : 1 });
+        //
+        //     clearTimeout(movementTimer);
+        //     movementTimer = setTimeout(() => {
+        //         this.lastMove = this.data.yourMove;
+        //         this.setData({ yourMove: 0 });
+        //     }, 300);
+        // });
 
-            this.setData({ yourMove: lastMove == 1 ? 2 : 1 });
-
-            clearTimeout(movementTimer);
-            movementTimer = setTimeout(() => {
-                this.lastMove = this.data.yourMove;
-                this.setData({ yourMove: 0 });
-            }, 300);
-        });
-
-        // 服务器通知结果
-        tunnel.on('result', packet => {
-            
-            // 清除计时器
-            clearInterval(this.countdownId);
-
-            // 双方结果
-            const myResult = packet.result.find(x => x.uid == this.uid);
-            const yourResult = packet.result.find(x => x.uid != this.uid);
-
-            // 本局结果
-            let gameInfo, win = 'nobody';
-
-            if (myResult.roundScore == 0 && yourResult.roundScore == 0) {
-                gameInfo = pickText(EQ_TEXTS);
-            }
-            else if (myResult.roundScore > 0) {
-                gameInfo = pickText(WIN_TEXTS);
-                win = 'me';
-            }
-            else {
-                gameInfo = pickText(LOSE_TEXTS);
-                win = 'you'
-            }
-
-            // 更新到视图
-            this.setData({
-                gameInfo,
-                myScore: myResult.totalScore,
-                myStreak: myResult.winStreak,
-                yourChoice: yourResult.choice,
-                yourScore: yourResult.totalScore,
-                yourStreak: yourResult.winStreak,
-                gameState: 'finish',
-                win,
-                startButtonText: win == 'you' ? "不服" : "再来", 
-                done: true
-            });
-
-            lab.finish('game');
-            setTimeout(() => this.setData({ playing: false }), 1000);
-        });
+        // [Avalon] No 'result' message
+    //     // 服务器通知结果
+    //     tunnel.on('result', packet => {
+    //
+    //         // 清除计时器
+    //         clearInterval(this.countdownId);
+    //
+    //         // 双方结果
+    //         const myResult = packet.result.find(x => x.uid == this.uid);
+    //         const yourResult = packet.result.find(x => x.uid != this.uid);
+    //
+    //         // 本局结果
+    //         let gameInfo, win = 'nobody';
+    //
+    //         if (myResult.roundScore == 0 && yourResult.roundScore == 0) {
+    //             gameInfo = pickText(EQ_TEXTS);
+    //         }
+    //         else if (myResult.roundScore > 0) {
+    //             gameInfo = pickText(WIN_TEXTS);
+    //             win = 'me';
+    //         }
+    //         else {
+    //             gameInfo = pickText(LOSE_TEXTS);
+    //             win = 'you'
+    //         }
+    //
+    //         // 更新到视图
+    //         this.setData({
+    //             gameInfo,
+    //             myScore: myResult.totalScore,
+    //             myStreak: myResult.winStreak,
+    //             yourChoice: yourResult.choice,
+    //             yourScore: yourResult.totalScore,
+    //             yourStreak: yourResult.winStreak,
+    //             gameState: 'finish',
+    //             win,
+    //             startButtonText: win == 'you' ? "不服" : "再来",
+    //             done: true
+    //         });
+    //
+    //         lab.finish('game');
+    //         setTimeout(() => this.setData({ playing: false }), 1000);
+    //     });
     }),
 
-    requestComputer() {
-        if (this.tunnel) {
-            this.tunnel.emit('requestComputer');
-        }
-    },
+        // [Avalon] No computer
+    // requestComputer() {
+    //     if (this.tunnel) {
+    //         this.tunnel.emit('requestComputer');
+    //     }
+    // },
 
     // 点击开始游戏按钮，发送加入游戏请求
     startGame: co.wrap(function *() {
@@ -224,16 +223,17 @@ Page({
             gameInfo: '正在寻找玩伴...'
         });
         this.tunnel.emit('join');
-    }),
+    })
 
-    // 点击手势，更新选择是石头、剪刀还是布
-    switchChoice(e) {
-        if (!this.data.playing) return;
-        let myChoice = this.data.myChoice + 1;
-        if (myChoice == 4) {
-            myChoice = 1;
-        }
-        this.setData({ myChoice });
-        this.tunnel.emit('choice', { choice: myChoice });
-    }
+        // [Avalon] No switch choice
+    // // 点击手势，更新选择是石头、剪刀还是布
+    // switchChoice(e) {
+    //     if (!this.data.playing) return;
+    //     let myChoice = this.data.myChoice + 1;
+    //     if (myChoice == 4) {
+    //         myChoice = 1;
+    //     }
+    //     this.setData({ myChoice });
+    //     this.tunnel.emit('choice', { choice: myChoice });
+    // }
 });
