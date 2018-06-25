@@ -172,6 +172,32 @@
     display: none;
 }
 
+.hintline {
+    font-size: 40rpx;
+    position: absolute;
+    width: 750rpx;
+    height: 112.5rpx;
+    line-height: 112.5rpx;
+    top: 50rpx;
+    margin-top: -56.25rpx;
+    left: 0;
+    text-align: center;
+    opacity: 1;
+}
+
+.mycharacter {
+    font-size: 75rpx;
+    position: absolute;
+    width: 750rpx;
+    height: 112.5rpx;
+    line-height: 112.5rpx;
+    margin-top: -56.25rpx;
+    bottom: 100rpx;
+    left: 0;
+    text-align: center;
+    opacity: 1;
+}
+
 .game-info {
     font-size: 75rpx;
     position: absolute;

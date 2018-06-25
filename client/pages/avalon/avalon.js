@@ -41,10 +41,12 @@ Page({
 
         // 开始游戏按钮文本
         startButtonText: "开始",
+        hintLine1: "",
 
-        //「我」的信息，包括昵称、头像、分数、选择
+        //「我」的信息，包括昵称、头像和角色
         myName: "",
         myAvatar: null,
+        myCharacterInfo: ""
     },
 
     // 页面显示后，开始连接
@@ -116,7 +118,9 @@ Page({
                 playing: false,
                 done: false,
                 finding: true,
-                gameInfo: "您的身份牌是:" + me.character
+                hintLine1: "您视野中的人:",
+                gameInfo: "请确认身份",
+                myCharacterInfo: me.character
             });
             // [Avalon] no timeout
             // setTimeout(() => {
@@ -220,7 +224,7 @@ Page({
             playing: false,
             done: false,
             finding: true,
-            gameInfo: '正在寻找玩伴...'
+            gameInfo: '正在等待其他玩家...'
         });
         this.tunnel.emit('join');
     })

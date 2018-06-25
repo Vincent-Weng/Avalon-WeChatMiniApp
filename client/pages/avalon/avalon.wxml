@@ -3,7 +3,10 @@
         <image class="avatar" src="{{myAvatar}}" mode="aspectFill" />
     </view>
 
+    <view class="hintline">
+        <view class="line">{{hintLine1}}</view>
+    </view>
     <view class="game-info">{{gameInfo}}</view>
-
     <button class="start-game" type="primary" bindtap="startGame">{{startButtonText}}</button>
+    <view class="mycharacter">{{myCharacterInfo}}</view>
 </view>
