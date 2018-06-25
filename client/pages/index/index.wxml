@@ -1,7 +1,6 @@
 <view class="index">
     <view class="nav">
         <navigator wx:for="{{labs}}" wx:key="{{lab.id}}" wx:for-item="lab" url="/pages/{{lab.id}}/{{lab.id}}">
-            <icon type="{{ done[lab.id] ? 'success' : 'waiting_circle' }}" size="24"></icon>
             <text>{{lab.title}}</text>
         </navigator>
     </view>

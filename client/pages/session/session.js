@@ -10,8 +10,8 @@ Page({
     status: 'waiting',
     url: 'https://' + config.host + '/me',
     requesting: false,
-    hintLine1: '完成服务器开发，',
-    hintLine2: '让服务器可以识别小程序会话'
+    hintLine1: '获取用户信息识别会话',
+    hintLine2: '请先授权微信用户信息'
   },
   request() {
     this.setData({

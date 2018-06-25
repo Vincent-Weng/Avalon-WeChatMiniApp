@@ -8,8 +8,8 @@ Page({
     status: 'waiting',
     url: 'wss://' + config.host + '/ws',
     connecting: false,
-    hintLine1: '完成服务器开发，',
-    hintLine2: '让服务器支持 WebSocket 连接'
+    hintLine1: '服务器WebSocket连通性测试',
+    hintLine2: '请不要连续测试'
   },
 
   /**

@@ -38,26 +38,32 @@
     position: absolute;
     width: 172rpx;
     height: 172rpx;
+    top: 150rpx;
     border-radius: 100%;
     border: 8rpx solid white;
     background-color: #f0f0f0;
 }
 
-.hand {
-    position: absolute;
-    width: 187rpx;
-    height: 187rpx;
-    border-radius: 100%;
-    overflow: visible;
+.blockInSight{
+  width: 172rpx;
+  text-align: center;
 }
 
-.score, .streak {
+.avatarInSight {
+    width: 172rpx;
+    height: 172rpx;
+    border-radius: 100%;
+    border: 8rpx solid white;
+    background-color: #f0f0f0;
+}
+
+.containerPlayersInSight {
     position: absolute;
-    color: #334567;
-    width: 225rpx;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    top: 120rpx;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .streak {
@@ -67,12 +73,6 @@
 .my-side .avatar {
     left: 656.25rpx;
     top: -93.75rpx;
-    transition: top ease .2s;
-}
-
-.my-side .hand {
-    left: 656.25rpx;
-    top: 150rpx;
     transition: top ease .2s;
 }
 
@@ -149,7 +149,7 @@
     height: 80rpx;
     line-height: 80rpx;
     margin-left: -100rpx;
-    bottom: 500rpx;
+    bottom: 120rpx;
     left: 50%;
     display: none;
 }
@@ -205,7 +205,7 @@
     height: 112.5rpx;
     line-height: 112.5rpx;
     margin-top: -56.25rpx;
-    bottom: 600rpx;
+    bottom: 550rpx;
     left: 0;
     text-align: center;
     opacity: 1;

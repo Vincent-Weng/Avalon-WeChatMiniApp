@@ -6,7 +6,15 @@
     <view class="hintline">
         <view class="line">{{hintLine1}}</view>
     </view>
+
+    <view class="containerPlayersInSight">
+      <view class="blockInSight" wx:for="{{playersInSight}}">
+        <image class="avatarInSight" src="{{item[1]}}" mode="aspectFill" />
+        <text>{{item[0]}}</text>
+      </view>
+    </view> 
+
     <view class="game-info">{{gameInfo}}</view>
-    <button class="start-game" type="primary" bindtap="startGame">{{startButtonText}}</button>
     <view class="mycharacter">{{myCharacterInfo}}</view>
+    <button class="start-game" type="primary" bindtap="startGame">{{startButtonText}}</button>
 </view>

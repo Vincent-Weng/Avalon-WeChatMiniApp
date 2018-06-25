@@ -7,8 +7,8 @@ Page({
     status: 'waiting',
     url: 'https://' + config.host + '/hello',
     requesting: false,
-    hintLine1: '完成服务器开发，',
-    hintLine2: '使得下面的地址可以访问'
+    hintLine1: '测试HTTPS连通性，',
+    hintLine2: ''
   },
   request() {
     this.setData({
