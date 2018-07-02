@@ -10,4 +10,7 @@
     <!-- <view class="clear">
         <button bindtap="clear">清空任务状态</button>
     </view> -->
+    <!-- <view class='footnote'>
+      <text text-align='center'>Developed by 翁瀚 Han, 卢村的豪哥</text>
+    </view> -->
 </view>

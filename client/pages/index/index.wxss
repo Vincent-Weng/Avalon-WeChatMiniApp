@@ -3,6 +3,14 @@
     font-family: 'PingFang SC';
 }
 
+.footnote {
+  text-align: center;
+  position: absolute;
+  bottom: 50rpx;
+  
+}
+
+
 .nav {
     display: flex;
     flex-direction: column;

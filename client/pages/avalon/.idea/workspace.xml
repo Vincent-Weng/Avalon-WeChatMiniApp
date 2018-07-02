@@ -17,8 +17,8 @@
       <file leaf-file-name="avalon.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/avalon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="123" column="21" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="21" />
+            <state relative-caret-position="316">
+              <caret line="114" column="80" lean-forward="true" selection-start-line="114" selection-start-column="80" selection-end-line="114" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -107,12 +107,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529827610504</updated>
-      <workItem from="1529827611798" duration="11108000" />
+      <workItem from="1529827611798" duration="12014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11108000" />
+    <option name="totallyTimeSpent" value="12014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1760" height="990" extended-state="0" />
@@ -178,8 +178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/avalon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="123" column="21" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="21" />
+        <state relative-caret-position="316">
+          <caret line="114" column="80" lean-forward="true" selection-start-line="114" selection-start-column="80" selection-end-line="114" selection-end-column="81" />
         </state>
       </provider>
     </entry>
